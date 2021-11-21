@@ -2,21 +2,24 @@
 // ['I>T', 'S>W', 'T>Z', 'W>I', 'Z>E', 'N>D', 'R>L', 'E>R', 'A>N', 'L>A'] => SWITZERLAND
 
 const roughFun = (arr) => {
-    // console.log(arr);
     var greaterArr = [];
     var smallerArr = [];
+    var str = "";
     arr.map((item) => {
         greaterArr.push(item[0]);
         smallerArr.push(item[2]);
     })
-    // console.log(greaterArr);
-    // console.log(smallerArr);
+    var greatestChar;
     greaterArr.map((item) => {
         if(!(smallerArr.find((item2) => item === item2))){
-            console.log(item);
+            greatestChar = item;
         }
     })
-    return "Working";
+    str = greatestChar;
+    while(str.length != arr.length+1){
+        str = str + arr.find((item) => str[str.length-1] == item[0])[2];
+    }
+    return str;
 }
 
 console.log(roughFun(['I>T', 'S>W', 'T>Z', 'W>I', 'Z>E', 'N>D', 'R>L', 'E>R', 'A>N', 'L>A']));
